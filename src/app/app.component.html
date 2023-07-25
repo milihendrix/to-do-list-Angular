@@ -7,7 +7,7 @@
     <table>
       <tr *ngFor = "let task of tasks" class="even">
         <td>
-          <pre>
+          <pre [class.is-done]="task.isDone">
             {{task.title}}
           </pre>
         </td>
