@@ -7,19 +7,19 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo-list'
-  tasks = [
-    "Visit Ann",
-    'Call Dad',
-    'Go to the gym',
-    'Wash the dishes',
-    "Shop for the party"
+  tasks: Task[] = [
+    new Task("Visit Ann"),
+    new Task('Call Dad'),
+    new Task('Go to the gym'),
+    new Task('Wash the dishes'),
+    new Task("Shop for the party")
   ];
 
   add(newTask: string){
-    this.tasks.push(newTask)  
+    this.tasks.push(new Task(newTask))  
   }
 
-  remove(existingTask: string){
+  remove(existingTask: Task){
     var userConfirmed = confirm(`Are you sure you want to delete: \n "${existingTask}"?`)
 
     if(userConfirmed){
@@ -27,7 +27,16 @@ export class AppComponent {
     }
   }
 
-  markAsDone(task: string){
-    alert('The task: "' + task + '" is done.')
+  markAsDone(task: Task){
+    task.isDone = true;
   }
+}
+
+class Task{
+
+  constructor(public title: string){
+
+  }
+
+  public isDone = false;
 }
