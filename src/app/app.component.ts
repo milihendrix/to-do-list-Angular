@@ -26,16 +26,16 @@ export class AppComponent {
       this.tasks = this.tasks.filter(task => task !== existingTask)
     }
   }
-
-  markAsDone(task: Task){
-    task.isDone = true;
-  }
 }
 
 class Task{
 
   constructor(public title: string){
 
+  }
+
+  toggleIsDone(){
+    this.isDone = !this.isDone;
   }
 
   public isDone = false;
